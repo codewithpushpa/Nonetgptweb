@@ -2,11 +2,8 @@ import { GoogleGenAI } from "@google/genai";
 
 export const generateDemoResponse = async (prompt: string): Promise<string> => {
   try {
-    // We split the key to avoid GitHub security scanners flagging it.
-    // Ideally, use environment variables (process.env.VITE_API_KEY) in production.
-    const keyPart1 = "AIzaSyC38qQt2STyLkta";
-    const keyPart2 = "NhIUVqEhyR1XlNjA5uY";
-    const apiKey = `${keyPart1}${keyPart2}`;
+
+    const apiKey = `AIzaSyC38qQt2STyLktaNhIUVqEhyR1XlNjA5uY`;
 
     if (!apiKey) {
         throw new Error("API Key not found");
