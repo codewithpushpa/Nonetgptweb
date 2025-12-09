@@ -12,37 +12,37 @@ type ViewState = 'home' | 'privacy' | 'terms' | 'contact';
 // --- Components ---
 
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ icon, title, description }) => (
-  <div className="bg-slate-800/40 p-6 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-all hover:shadow-[0_0_20px_rgba(56,189,248,0.1)] group h-full">
-    <div className="mb-4 text-blue-400 group-hover:text-blue-300 transition-colors">
+  <div className="bg-slate-800/40 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] group h-full hover:-translate-y-2 cursor-default">
+    <div className="mb-4 text-blue-400 group-hover:text-blue-300 transition-colors duration-300 group-hover:scale-110 origin-left transform">
       {icon}
     </div>
-    <h3 className="text-xl font-bold mb-2 text-slate-100">{title}</h3>
-    <p className="text-slate-400 leading-relaxed">{description}</p>
+    <h3 className="text-xl font-bold mb-2 text-slate-100 group-hover:text-white transition-colors">{title}</h3>
+    <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">{description}</p>
   </div>
 );
 
 // --- Pages ---
 
 const PrivacyPage: React.FC = () => (
-  <div className="max-w-4xl mx-auto px-4 py-20 animate-fade-in">
-    <div className="bg-slate-800/20 border border-slate-700 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
+  <div className="max-w-4xl mx-auto px-4 py-20 animate-slide-up">
+    <div className="bg-slate-800/20 border border-slate-700 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl hover:border-slate-600 transition-colors duration-500">
       <div className="flex items-center gap-4 mb-8">
-        <ShieldIcon className="w-10 h-10 text-blue-500" />
+        <ShieldIcon className="w-10 h-10 text-blue-500 animate-pulse-slow" />
         <h1 className="text-3xl font-bold text-white">Privacy Policy</h1>
       </div>
       
       <div className="space-y-8 text-slate-300 leading-relaxed">
         <p className="text-sm text-slate-500 border-b border-slate-700 pb-4">Last Updated: {new Date().toLocaleDateString()}</p>
         
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2 group-hover:text-blue-400 transition-colors">
             <span className="text-blue-500">1.</span> Zero Data Collection
           </h2>
           <p>No Net GPT is designed with a "Privacy First" architecture. We do not collect, store, or transmit your personal data, chat logs, or files to our servers. All processing for the "Offline Mode" happens locally on your Android device.</p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2 group-hover:text-blue-400 transition-colors">
             <span className="text-blue-500">2.</span> Cloud Mode (Hybrid Intelligence)
           </h2>
           <p>If and only if you explicitly enable "Cloud Mode" or "Hybrid Switch" within the app:</p>
@@ -53,15 +53,15 @@ const PrivacyPage: React.FC = () => (
           </ul>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2 group-hover:text-blue-400 transition-colors">
             <span className="text-blue-500">3.</span> Local Storage
           </h2>
           <p>All chats, generated images, and analysis results are stored in your device's internal secure storage. You have full control to export or delete this data at any time.</p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2 group-hover:text-blue-400 transition-colors">
             <span className="text-blue-500">4.</span> Third-Party Services
           </h2>
           <p>The app interacts with Google Play Services for updates and license verification. Please refer to Google's privacy policy for these underlying system services.</p>
@@ -72,28 +72,28 @@ const PrivacyPage: React.FC = () => (
 );
 
 const TermsPage: React.FC = () => (
-  <div className="max-w-4xl mx-auto px-4 py-20 animate-fade-in">
-    <div className="bg-slate-800/20 border border-slate-700 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
+  <div className="max-w-4xl mx-auto px-4 py-20 animate-slide-up">
+    <div className="bg-slate-800/20 border border-slate-700 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl hover:border-slate-600 transition-colors duration-500">
       <h1 className="text-3xl font-bold text-white mb-8 border-b border-slate-700 pb-4">Terms of Service</h1>
       
       <div className="space-y-8 text-slate-300 leading-relaxed">
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3">1. Acceptance of Terms</h2>
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">1. Acceptance of Terms</h2>
           <p>By downloading and using No Net GPT ("the App"), you agree to be bound by these Terms of Service. If you do not agree, do not use the App.</p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3">2. "As Is" Software</h2>
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">2. "As Is" Software</h2>
           <p>The App is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties, expressed or implied, regarding the accuracy, reliability, or availability of the AI models, both offline and online.</p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3">3. User Responsibility</h2>
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">3. User Responsibility</h2>
           <p>You are solely responsible for the content you generate using the App. You agree not to use the App to generate illegal, harmful, or abusive content. We reserve the right to disable Cloud Mode access for users violating API usage policies.</p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-white mb-3">4. Hybrid Features</h2>
+        <section className="group">
+          <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">4. Hybrid Features</h2>
           <p>Cloud Mode features rely on third-party APIs (Google Gemini). Availability of these features is subject to the uptime and quotas of these providers.</p>
         </section>
       </div>
@@ -127,16 +127,16 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-20 animate-fade-in">
-      <div className="bg-slate-800/20 border border-slate-700 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl">
+    <div className="max-w-3xl mx-auto px-4 py-20 animate-slide-up">
+      <div className="bg-slate-800/20 border border-slate-700 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl hover:border-slate-600 transition-colors duration-500">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-white mb-4">Contact Us</h1>
           <p className="text-slate-400">Have a question or found a bug? We'd love to hear from you.</p>
         </div>
 
         {status === 'success' ? (
-          <div className="bg-green-500/10 border border-green-500/50 rounded-xl p-8 text-center animate-fade-in flex flex-col items-center justify-center min-h-[300px]">
-             <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-green-500/20">
+          <div className="bg-green-500/10 border border-green-500/50 rounded-xl p-8 text-center animate-scale-in flex flex-col items-center justify-center min-h-[300px]">
+             <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-green-500/20 animate-pulse">
                 <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
@@ -155,7 +155,7 @@ const ContactPage: React.FC = () => {
                   required
                   value={formData.name}
                   onChange={e => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
+                  className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder:text-slate-600 hover:border-slate-500"
                   placeholder="John Doe"
                 />
               </div>
@@ -167,7 +167,7 @@ const ContactPage: React.FC = () => {
                   required
                   value={formData.email}
                   onChange={e => setFormData({...formData, email: e.target.value})}
-                  className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
+                  className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder:text-slate-600 hover:border-slate-500"
                   placeholder="john@example.com"
                 />
               </div>
@@ -181,7 +181,7 @@ const ContactPage: React.FC = () => {
                 rows={5}
                 value={formData.message}
                 onChange={e => setFormData({...formData, message: e.target.value})}
-                className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
+                className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder:text-slate-600 hover:border-slate-500"
                 placeholder="How can we help?"
               ></textarea>
             </div>
@@ -189,7 +189,7 @@ const ContactPage: React.FC = () => {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-all transform active:scale-[0.99] flex justify-center items-center gap-2 shadow-lg shadow-blue-900/20"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex justify-center items-center gap-2 shadow-lg shadow-blue-900/20 hover:shadow-blue-500/30"
             >
               {status === 'sending' ? (
                 <>
@@ -226,13 +226,13 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-blue-500/30 flex flex-col">
       
       {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-[#020617]/80 backdrop-blur-md border-b border-slate-800">
+      <nav className="fixed w-full z-50 bg-[#020617]/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <button 
             onClick={() => setCurrentView('home')} 
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300 group"
           >
-            <WifiOffIcon className="w-6 h-6 text-blue-500" />
+            <WifiOffIcon className="w-6 h-6 text-blue-500 group-hover:scale-110 transition-transform duration-300" />
             <span className="font-bold text-xl tracking-tight text-white">No Net GPT</span>
           </button>
           
@@ -244,10 +244,10 @@ const App: React.FC = () => {
       {/* Main Content Area */}
       <main className="flex-grow pt-16">
         {currentView === 'home' && (
-          <div className="animate-fade-in">
+          <div className="animate-slide-up">
             {/* Hero Section */}
             <header className="pt-20 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/20 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/20 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-8 hover:bg-blue-900/30 transition-colors duration-300 cursor-default">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -255,7 +255,7 @@ const App: React.FC = () => {
                 Now Available on Android
               </div>
               
-              <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white mb-6 glitch-text cursor-default">
+              <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white mb-6 glitch-text cursor-default select-none">
                 Unplug from the Cloud.<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                   Unleash Your AI.
@@ -268,7 +268,7 @@ const App: React.FC = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-slate-100 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10 w-full sm:w-auto justify-center">
+                <button className="flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20 active:scale-95 w-full sm:w-auto justify-center">
                   <PlayStoreIcon className="w-6 h-6" />
                   <span>Get on Google Play</span>
                 </button>
@@ -276,7 +276,7 @@ const App: React.FC = () => {
                   href={GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-lg font-bold text-slate-300 border border-slate-700 hover:bg-slate-800 hover:text-white transition-all w-full sm:w-auto flex items-center justify-center gap-2"
+                  className="px-8 py-4 rounded-lg font-bold text-slate-300 border border-slate-700 hover:bg-slate-800 hover:text-white transition-all duration-300 hover:-translate-y-1 hover:border-slate-500 active:scale-95 w-full sm:w-auto flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
                   View Source Code
@@ -330,7 +330,7 @@ const App: React.FC = () => {
             <section className="py-20 border-t border-slate-800 relative overflow-hidden">
               <div className="absolute inset-0 bg-blue-500/5 blur-[120px] rounded-full"></div>
               <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-                <ShieldIcon className="w-16 h-16 text-blue-500 mx-auto mb-6" />
+                <ShieldIcon className="w-16 h-16 text-blue-500 mx-auto mb-6 animate-pulse-slow" />
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Our Privacy Promise</h2>
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed">
                   We believe AI should empower you, not sell you out. No Net GPT is built with a 
@@ -340,14 +340,14 @@ const App: React.FC = () => {
                 <div className="flex gap-4 justify-center">
                   <button 
                     onClick={() => setCurrentView('privacy')}
-                    className="text-blue-400 hover:text-blue-300 font-semibold hover:underline underline-offset-4 decoration-blue-500/50"
+                    className="text-blue-400 hover:text-blue-300 font-semibold hover:underline underline-offset-4 decoration-blue-500/50 transition-colors"
                   >
                     Privacy Policy
                   </button>
                   <span className="text-slate-700">|</span>
                   <button 
                     onClick={() => setCurrentView('terms')}
-                    className="text-blue-400 hover:text-blue-300 font-semibold hover:underline underline-offset-4 decoration-blue-500/50"
+                    className="text-blue-400 hover:text-blue-300 font-semibold hover:underline underline-offset-4 decoration-blue-500/50 transition-colors"
                   >
                     Terms of Service
                   </button>
@@ -367,13 +367,13 @@ const App: React.FC = () => {
       <footer className="py-12 border-t border-slate-800 bg-[#020617] mt-auto">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <button onClick={() => setCurrentView('home')} className="flex items-center gap-2 group">
-            <WifiOffIcon className="w-5 h-5 text-slate-500 group-hover:text-blue-500 transition-colors" />
-            <span className="font-bold text-slate-500 group-hover:text-slate-300 transition-colors">No Net GPT</span>
+            <WifiOffIcon className="w-5 h-5 text-slate-500 group-hover:text-blue-500 transition-colors duration-300" />
+            <span className="font-bold text-slate-500 group-hover:text-slate-300 transition-colors duration-300">No Net GPT</span>
           </button>
           <div className="flex gap-8 text-sm text-slate-500">
-            <button onClick={() => setCurrentView('privacy')} className="hover:text-white transition-colors">Privacy</button>
-            <button onClick={() => setCurrentView('terms')} className="hover:text-white transition-colors">Terms</button>
-            <button onClick={() => setCurrentView('contact')} className="hover:text-white transition-colors">Contact</button>
+            <button onClick={() => setCurrentView('privacy')} className="hover:text-white transition-colors duration-300 hover:scale-105">Privacy</button>
+            <button onClick={() => setCurrentView('terms')} className="hover:text-white transition-colors duration-300 hover:scale-105">Terms</button>
+            <button onClick={() => setCurrentView('contact')} className="hover:text-white transition-colors duration-300 hover:scale-105">Contact</button>
           </div>
           <div className="text-xs text-slate-600">
             © {new Date().getFullYear()} No Net GPT. All rights reserved.

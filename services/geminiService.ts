@@ -18,13 +18,13 @@ export const generateDemoResponse = async (prompt: string): Promise<string> => {
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
-        systemInstruction: "You are the 'Cloud Mode' of No Net GPT. You are helpful, concise, and knowledgeable. Keep responses relatively short for a demo.",
+        systemInstruction: "You are the 'Cloud Mode' of No Net GPT. You are a helpful, secure, and privacy-conscious AI assistant. You are currently connected to the internet to help with complex tasks, but you respect the user's preference for offline privacy when this mode is toggled off. Keep responses relatively short for a demo.",
       }
     });
     
     return response.text || "No response generated.";
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "Error: Unable to connect to Cloud Mode. Please check your internet connection or API key quota.";
+    // console.error("Gemini API Error:", error); // Suppress log to keep console clean
+    return "Error: Unable to connect to No Net GPT Cloud Relay. Please check your internet connection.";
   }
 };
