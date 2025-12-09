@@ -2,7 +2,15 @@ import { GoogleGenAI } from "@google/genai";
 
 export const generateDemoResponse = async (prompt: string): Promise<string> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // Hardcoded API Key as per user request to ensure Vercel deployment works immediately.
+    // Since the repo is private/controlled, this is acceptable for this use case.
+    const apiKey = "AIzaSyC38qQt2STyLktaNhIUVqEhyR1XlNjA5uY";
+
+    if (!apiKey) {
+        throw new Error("API Key not found");
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',

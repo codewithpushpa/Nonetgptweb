@@ -4,6 +4,7 @@ import CloudDemo from './components/CloudDemo';
 
 // --- Constants ---
 const GITHUB_URL = "https://github.com/nonetgpt/nonetgptweb";
+const CONTACT_EMAIL = "nonetgpt@gmail.com";
 
 // --- Types ---
 type ViewState = 'home' | 'privacy' | 'terms' | 'contact';
@@ -109,14 +110,20 @@ const ContactPage: React.FC = () => {
     if (!formData.name || !formData.email || !formData.message) return;
     
     setStatus('sending');
+
+    // Construct Mailto Link
+    const subject = encodeURIComponent(`No Net GPT Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     
-    // Simulate API call delay
+    // Simulate delay for UX, then open mail client
     setTimeout(() => {
+      window.location.href = mailtoLink;
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
-      // Reset status after 3 seconds
+      // Reset status after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
-    }, 1500);
+    }, 1000);
   };
 
   return (
@@ -134,8 +141,8 @@ const ContactPage: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
              </div>
-             <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-             <p className="text-slate-300">Thank you for reaching out. We'll get back to you shortly.</p>
+             <h3 className="text-2xl font-bold text-white mb-2">Email Client Opened!</h3>
+             <p className="text-slate-300">Please complete the sending process in your email app.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -187,7 +194,7 @@ const ContactPage: React.FC = () => {
               {status === 'sending' ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                  Sending...
+                  Preparing Email...
                 </>
               ) : (
                 <>
@@ -228,14 +235,9 @@ const App: React.FC = () => {
             <WifiOffIcon className="w-6 h-6 text-blue-500" />
             <span className="font-bold text-xl tracking-tight text-white">No Net GPT</span>
           </button>
-          <div className="flex gap-4 sm:gap-6">
-            <button onClick={() => setCurrentView('home')} className={`text-sm font-semibold transition-colors ${currentView === 'home' ? 'text-white' : 'text-slate-400 hover:text-white'}`}>
-              Home
-            </button>
-            <button onClick={() => setCurrentView('contact')} className={`text-sm font-semibold transition-colors ${currentView === 'contact' ? 'text-white' : 'text-slate-400 hover:text-white'}`}>
-              Contact
-            </button>
-          </div>
+          
+          {/* Right Side is deliberately empty as per user request */}
+          <div></div>
         </div>
       </nav>
 
