@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { generateDemoResponse } from '../services/geminiService';
-import { SendIcon, CloudIcon, WifiOffIcon } from './Icons';
+import { SendIcon, CloudIcon } from './Icons';
 import { ChatMessage } from '../types';
 
-const CloudDemo: React.FC = () => {
+export const CloudDemo: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     { role: 'model', text: 'Cloud Mode activated. I am ready to help with complex tasks requiring internet access. Otherwise, toggle me off for 100% offline privacy.' }
   ]);
@@ -30,7 +30,7 @@ const CloudDemo: React.FC = () => {
     setMessages(prev => [...prev, { role: 'user', text: userText }]);
     setLoading(true);
 
-    // Call Gemini
+    // Call Gemini (with Founder logic included in service)
     const responseText = await generateDemoResponse(userText);
     
     setMessages(prev => [...prev, { role: 'model', text: responseText }]);
@@ -38,21 +38,21 @@ const CloudDemo: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mt-12 border border-slate-700 rounded-xl overflow-hidden bg-slate-900/50 shadow-2xl backdrop-blur-sm">
+    <div className="w-full max-w-2xl mx-auto mt-12 border border-slate-700 rounded-xl overflow-hidden bg-slate-900/50 shadow-2xl backdrop-blur-sm transform transition-all hover:border-blue-500/30">
       <div className="bg-slate-800/80 px-4 py-3 flex items-center justify-between border-b border-slate-700">
         <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse"></div>
+            <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
             <span className="font-mono text-sm text-slate-300 font-semibold flex items-center gap-2">
                 <CloudIcon className="w-4 h-4" /> Cloud Mode: ACTIVE
             </span>
         </div>
-        <span className="text-xs text-slate-500 font-mono">Powered by Gemini</span>
+        <span className="text-xs text-slate-500 font-mono hidden sm:block">Powered by No Net GPT</span>
       </div>
       
       <div className="h-64 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-slate-700">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[80%] rounded-lg px-4 py-2 text-sm ${
+          <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-message-pop`}>
+            <div className={`max-w-[85%] sm:max-w-[80%] rounded-lg px-4 py-2 text-sm shadow-md ${
               msg.role === 'user' 
                 ? 'bg-blue-600 text-white rounded-br-none' 
                 : 'bg-slate-700 text-slate-200 rounded-bl-none border border-slate-600'
@@ -62,9 +62,11 @@ const CloudDemo: React.FC = () => {
           </div>
         ))}
         {loading && (
-          <div className="flex justify-start">
-             <div className="bg-slate-700 text-slate-200 rounded-lg px-4 py-2 rounded-bl-none text-sm animate-pulse">
-                Thinking...
+          <div className="flex justify-start animate-message-pop">
+             <div className="bg-slate-700 text-slate-200 rounded-lg px-4 py-2 rounded-bl-none text-sm animate-pulse flex items-center gap-2 border border-slate-600">
+                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-75"></div>
+                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-150"></div>
              </div>
           </div>
         )}
@@ -76,13 +78,13 @@ const CloudDemo: React.FC = () => {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask something requiring the cloud..."
-          className="flex-1 bg-slate-900 border border-slate-600 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+          placeholder="Ask No Net GPT..."
+          className="flex-1 bg-slate-900 border border-slate-600 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-600"
         />
         <button 
           type="submit" 
           disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white p-2 rounded-md transition-colors"
+          className="bg-blue-600 hover:bg-blue-500 hover:-translate-y-0.5 shadow-lg shadow-blue-600/20 disabled:opacity-50 disabled:hover:translate-y-0 disabled:shadow-none text-white p-2 rounded-md transition-all duration-200"
         >
           <SendIcon className="w-5 h-5" />
         </button>
@@ -90,5 +92,3 @@ const CloudDemo: React.FC = () => {
     </div>
   );
 };
-
-export default CloudDemo;

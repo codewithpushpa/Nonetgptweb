@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldIcon, WifiOffIcon, SmartphoneIcon, EyeOffIcon, PlayStoreIcon, CloudIcon } from './components/Icons';
-import CloudDemo from './components/CloudDemo';
+import { CloudDemo } from './components/CloudDemo';
 
 // --- Constants ---
 const GITHUB_URL = "https://github.com/nonetgpt/nonetgptweb";
