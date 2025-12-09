@@ -29,11 +29,9 @@
       body {
         background-color: #020617;
         color: #e2e8f0;
-        -webkit-font-smoothing: antialiased;
       }
-      /* Subtle smooth scrolling for the whole page */
-      html {
-        scroll-behavior: smooth;
+      .glitch-text:hover {
+        text-shadow: 2px 0 #38bdf8, -2px 0 #fbbf24;
       }
     </style>
   <script type="importmap">
@@ -49,6 +47,6 @@
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>

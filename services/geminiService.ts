@@ -1,11 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize the client
-// The API key is injected from the environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const generateDemoResponse = async (prompt: string): Promise<string> => {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
@@ -17,6 +15,6 @@ export const generateDemoResponse = async (prompt: string): Promise<string> => {
     return response.text || "No response generated.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Error: Unable to connect to Cloud Mode. This demo requires a valid API key.";
+    return "Error: Unable to connect to Cloud Mode. Please check your internet connection or API key quota.";
   }
 };
